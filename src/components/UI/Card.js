@@ -1,6 +1,8 @@
 import "./Card.css";
 
 const Card = (props) => {
+  console.log("[Card] rendered");
+
   const classes = ["card"];
   if (props.className) {
     classes.push(props.className);

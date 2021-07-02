@@ -3,6 +3,8 @@ import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
+  console.log("[ExpenseItem] rendered");
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
