@@ -37,13 +37,18 @@ const ExpenseForm = (props) => {
     });
   };
 
+  const parseStringToDateObject = (dateString) => {
+    const dateArray = dateString.split(/\D/); // dateString is in format dd/mm/yyyy
+    return new Date(+dateArray[0], +dateArray[1] - 1, +dateArray[2]);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
     const expenseData = {
       title: userInput.title,
-      amount: userInput.amount,
-      date: userInput.date,
+      amount: +userInput.amount,
+      date: parseStringToDateObject(userInput.date),
     };
     props.onExpenseSave(expenseData);
 
@@ -86,6 +91,12 @@ const ExpenseForm = (props) => {
             value={userInput.date}
             onChange={dateChangeHandler}
           />
+        </div>
+
+        <div className="new-expense__actions">
+          <button type="button" onClick={props.onCancel}>
+            Cancel
+          </button>
         </div>
 
         <div className="new-expense__actions">
